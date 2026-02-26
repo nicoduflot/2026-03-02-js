@@ -1,0 +1,69 @@
+/* sélecteur css balise */
+/*
+body{
+    background-color: antiquewhite;
+}
+*/
+/* sélecteur selon une classe */
+/*
+.stupid{
+    background-color: bisque;
+}
+*/
+/* sélecteur selon l'id */
+/*
+#titre-principal{
+    color: darkred;
+}
+*/
+/* combinaison de sélecteur selon leur place dans la structure */
+/*
+main ul{
+    font-size: 1.1rem;
+}
+
+footer > div ul{
+    color: darkred;
+}
+
+p:not(p.stupid){
+    color: darkblue;
+}
+*/
+
+.fondGris{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#carre{
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    margin: 20px auto;
+    transition: transform 1s;
+}
+
+.gauche{
+    transform: translateX( calc( -1 * ( 50vw - 100px ) ) );
+}
+
+.droite{
+    transform: translateX( calc(  50vw - 100px ) );
+}
+
+.slide-menu{
+    background-color: white;
+    position: absolute;
+    left: -310px;
+    transition: transform 0.2s;
+    z-index: 10;
+     width: 300px; 
+}
+
+.toggle-element{
+    transform: translateX(350px);
+}
+
+.table>:not(caption)>*>*{
+    background-color: transparent;
+}

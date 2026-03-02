@@ -148,7 +148,40 @@ Créer deux constantes nombre et afficher :
     a puissance b
 */
 
- /** 
- * De Comparaisons
+const a = 42;
+const b = 66;
+
+console.log(a + b);
+console.log(a - b);
+console.log(a / b);
+console.log(a % b);
+console.log(a ** b);
+
+console.log(`const a = ${a} const b =  ${b}`);
+console.log(`${a} + ${b} : ${a + b}`);
+console.log(`${a} - ${b} : ${a - b}`);
+console.log(`${a} / ${b} : ${a / b}`);
+console.log(`${a} % ${b} : ${a % b}`);
+console.log(`${a} ** ${b} : ${a ** b}`);
+
+/** 
+ * Opérateur de Comparaisons
  * 
+ *  <   Strictement inférieur à 
+ *  >   Strictement supérieur à
+ *  <=  inférieur ou égal à
+ *  >=  supérieur ou égal à
+ * 
+ *  ==  égalité non stricte (compare la valeur)
+ *  === égalité stricte (compare la valeur et le type)
+ *  
+ *  '2'  ==  2 =>   vrai
+ *  '2'  === 2 =>   faux
+ * 
+ *  !=  Différence non stricte (ne compare la différence que sur la valeur)
+ *  !== Différence stricte (ne compare la différence sur la valeur et le type)
+ * 
+ *  '2' !=  2    => faux
+ *  '2' !== 2    => vrai
+ *  
 */

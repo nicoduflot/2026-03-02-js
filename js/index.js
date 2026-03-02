@@ -138,6 +138,16 @@ console.log(++cpt); /* Ajoute 1 à cpt puis l'affiche (3) */
  * 
  */
 
+/*
+Créer deux constantes nombre et afficher : 
+    leur addition
+    leur soustraction
+    leur    multiplication
+            division
+            modulo
+    a puissance b
+*/
+
  /** 
  * De Comparaisons
  * 

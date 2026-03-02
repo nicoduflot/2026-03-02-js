@@ -136,3 +136,128 @@ console.log('-------------- .forEach() ------------------------');
 cars.forEach( function(car, index, tab){
     console.log(car, index, tab);
 } );
+
+/* Extraire des valeurs du tableau */
+/* .pop() extraire la dernière valeur d'un tableau */
+/* .shift() extraire la première valeur d'un tableau */
+/* .splice() extraire x valeur d'un tableau depuis un indice x sur y valeur */
+
+console.log('-------------- .pop() ------------------------');
+
+const lastEntry = cars.pop();
+console.log(lastEntry);
+console.log(cars);
+
+console.log('-------------- .shift() ------------------------');
+
+const firstEntry = cars.shift();
+console.log(firstEntry);
+console.log(cars);
+
+console.log('-------------- .splice() (1) --------------------');
+
+const removed = cars.splice(1,3);
+console.log(removed);
+console.log(cars);
+
+console.log('-------------- .splice() (2) --------------------');
+const replaced = cars.splice(0,1, 'Alpine', 'Mazda');
+console.log(replaced);
+console.log(cars);
+
+console.log('-------------- .splice() (3) --------------------');
+cars.splice(1,0, firstEntry, lastEntry, removed[0], removed[1], removed[2], replaced[0]);
+console.log(cars);
+
+/* Comment créer une copie d'une tableau */
+/*
+Faire le script suivant ne copie pas le contenu du tableau dans un autre, mais crée une nouvelle référence du même tableau
+(on lui donne un autre nom mais c'est toujours les mêmes données)
+
+const carsClone = cars;
+*/
+
+/* Pour créer une nouvelle donnée, pour tableau, il faut utiliser la méthode .slice() */
+console.log('-------------- .slice() () --------------------');
+
+const carsClone = cars.slice();
+
+console.log(carsClone);
+carsClone.pop();
+console.log(carsClone);
+console.log(cars);
+
+console.log(cars.slice(2, 4));
+
+/* En JS, les tableauà deux dimension natifs n'existent pas */
+
+const carsYears = [
+    ['Fiat', 1996],
+    ['Kya',  1995],
+    ['Kya',  1990],
+    ['Ford', 1950],
+    [12, 25, 33],
+];
+
+console.log(carsYears);
+
+console.table(cars);
+console.table(carsYears);
+console.log(carsYears[2][1]);
+
+carsClone.sort();
+console.log(carsClone);
+carsClone.reverse();
+console.log(carsClone);
+
+const carsTest = carsYears.slice();
+carsTest.sort();
+console.table(carsTest);
+
+/* parcourir un tableau de tableaux */
+for(let i = 0; i < carsTest.length; i = i + 1 ){
+    console.log(carsTest[i]);
+    for(let j = 0; j < carsTest[i].length; j = j + 1){
+        console.log(carsTest[i][j]);
+    }
+}
+
+
+console.log('-------------- trouver la première occurence --');
+/* trouver la première occurence d'un tableau selon un modèle */
+
+const arrayNum =  [5, 8, 12, 33, 8, 130, 44]; /* trouver l'indice de la première occurence de la valeur 8 */
+for(let indice in arrayNum){
+    if(arrayNum[indice] > 20){
+        console.log(arrayNum[indice]);
+        break;
+    }
+}
+
+console.log('-------------- .find() --------------------------');
+const found = arrayNum.find(function(element){
+    return element > 20;
+});
+
+console.log(found);
+console.log('-------------- trouver ltoutes les occurences --');
+console.log('-------------- .filter() --------------------------');
+
+const filtered = arrayNum.filter(function(element){
+    return element > 20;
+});
+
+console.log(filtered);
+
+console.log('-------------- .indexOf() ---------------------------');
+console.log(arrayNum.indexOf(12));
+
+
+console.log('Le rapide renard saute par dessus le chien feignant'.indexOf('ien'));
+console.log('Le rapide renard saute par dessus le chien feignant'.indexOf('Ien'));
+
+const phraseTest = 'Le rapide renard saute par dessus le chien feignant'.toLowerCase();
+console.log(phraseTest);
+const chaineRecherche = 'IEN'.toLowerCase();
+
+console.log(phraseTest.indexOf(chaineRecherche));

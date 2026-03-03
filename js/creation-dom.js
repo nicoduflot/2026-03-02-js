@@ -182,5 +182,25 @@ window.addEventListener('DOMContentLoaded', function(){
             addItemList(document.getElementById('toDoList'), document.getElementById('listItem'));
         }
     });
+    
+    /* Vérifier les champs d'un formulaire avant l'envoi */
+    /*
+    - surveiller le clic sur le bouton type submit
+    - récupérer l'événement
+    - arrête le comportement par défaut de lévénement de formulaire submit (preventDefault)
+    - vérifier que les deux champs soient non vide
+    - si les deux ne sont pas vide, applique la méthode submit au formulaire
+    */
 
+    document.querySelector('#formValid button[type="submit"]').addEventListener('click', function(event){
+        event.preventDefault();
+        const nom = document.querySelector('#formValid [name="nom"]');
+        const prenom = document.querySelector('#formValid [name="prenom"]');
+        if('' !== nom.value && '' !== prenom.value){
+            document.getElementById('formValid').submit();
+        }else{
+            /* Mettre les classes bootstrap dans les bon éléments pour indiquer les champs valident ou non */
+        }
+        
+    });
 });

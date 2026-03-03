@@ -114,7 +114,9 @@ et renvoyer une liste des doublons dans le tableau tableauxDoublons
 
 Pensez a utiliser .map()
 
-le fruit :  est présent x fois
+utilisez un tableau temporaire
+
+le fruit : 'fruit' est présent x fois
 
 */
 
@@ -131,3 +133,35 @@ const tableauDeFruits = [
     'banane',
     'tomate'
 ];
+/* je crée un tableau de doublons */
+const tableauxDoublons = [];
+
+/* je crée un tableau temporaire qui est une copie de tableau de doublons */
+const tabTemp = tableauDeFruits.slice();
+
+console.log('tableauDeFruits : ',tableauDeFruits);
+console.log('tabTemp', tabTemp);
+/* je trie par ordre alphabétique le tableau temporaire */
+tabTemp.sort();
+console.log('tabTemp', tabTemp);
+/* je crée un compteur de fruit initialisé à 1 */
+let cptFruit = 1;
+/* je parcours ensuite le tableau temporaire */
+tabTemp.map(function(element, index, tab){
+    /* je regarde si l'élément actuel et égal à l'élément suivant */
+    if(element === tab[index+1]){
+        /* si oui, j'auoute 1 au compteur de fruit */
+        cptFruit = cptFruit + 1;
+    }else{
+        /*si non : on change de fruit donc on vérifie si le compteur de l'élément actuel est supérieur à 1 (si il existe un ou des doublons de l'élément)*/
+        if(cptFruit > 1){
+            /* si l'élément possède un ou des doublons, on renseigne le tableau des doublons */
+            tableauxDoublons.push(`Le fruit ${element} est présent ${cptFruit} fois`);
+        }
+        /* on remet le compteur à un pour le prochain élément (un nouvel élément pas encore rencontré dans le tableau ) */
+        cptFruit = 1;
+    }
+});
+
+console.log(tableauxDoublons);
+

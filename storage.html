@@ -71,18 +71,18 @@
                 <h3>Session Storage</h3>
                 <p>
                     <label>Username</label>
-                    <input type="text" class="form-control" id="sessionUser" >
+                    <input type="text" class="form-control" id="sessionUser" value="" >
                 </p>
                 <p>
                     Username enregistré : <span id="sessionUserLogged"></span>
                 </p>
                 <p>
                     <div class="btn-group">
-                        <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameLogged()">
+                        <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNamelogged()">
                             Enregistrer
                         </button>
                         <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameDelete()">Effacer</button>
-                        <button class="btn btn-outline-primary btn-sm" onclick="sessionUserNameClear()">Vider la session</button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="sessionClear()">Vider la session</button>
                     </div>
                 </p>
             </article>
@@ -98,11 +98,11 @@
                 </p>
                 <p>
                     <div class="btn-group">
-                        <button class="btn btn-outline-primary btn-sm" onclick="localUserNameLogged()">
+                        <button class="btn btn-outline-primary btn-sm" onclick="localUserNamelogged()">
                             Enregistrer
                         </button>
                         <button class="btn btn-outline-primary btn-sm" onclick="localUserNameDelete()">Effacer</button>
-                        <button class="btn btn-outline-primary btn-sm" onclick="localUserNameClear()">Effacer</button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="localClear()">Effacer</button>
                     </div>
                 </p>
             </article>
@@ -118,10 +118,10 @@
                 </p>
                 <p>
                     <div class="btn-group">
-                        <button class="btn btn-outline-primary btn-sm" onclick="cookieUserNameLogged()">
+                        <button class="btn btn-outline-primary btn-sm" onclick="">
                             Enregistrer                            
                         </button>
-                        <button class="btn btn-outline-primary btn-sm" onclick="cookieUserNameDelete()">supprimer</button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="">supprimer</button>
                     </div>
                 </p>
             </article>
@@ -134,8 +134,7 @@
     </footer>
     <script>
         checkSessionUser();
-        checkLocalUser();
-        checkCookieUser();
+        checkLocalUser()
     </script>
 </body>
 

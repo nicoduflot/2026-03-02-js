@@ -105,3 +105,29 @@ Il faut utiliser la forme suivante :
         console.log(`Coucou ${name}`);
     }
 )('Nicolas');
+
+/*
+exercice
+ 
+créer une fonction qui va parcourir un tableau de données tableauDeFruits 
+et renvoyer une liste des doublons dans le tableau tableauxDoublons
+
+Pensez a utiliser .map()
+
+le fruit :  est présent x fois
+
+*/
+
+const tableauDeFruits = [
+    'banane',
+    'tomate',
+    'pêche',
+    'banane',
+    'tomate',
+    'banane',
+    'fraise',
+    'tomate',
+    'pêche',
+    'banane',
+    'tomate'
+];

@@ -117,7 +117,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     /* 
     Ajouter le comportement suivant : 
-        quand je clicque sur n'importe lequel des éléments ajouté à la liste, il se supprime
+        quand je clique sur n'importe lequel des éléments ajouté à la liste, il se supprime
     */
 
     /**
@@ -127,10 +127,45 @@ window.addEventListener('DOMContentLoaded', function(){
      */
     function addItemList(target = '', source = ''){
         if('' !== source.value){
+            /* on crée un balise li */
             const li = document.createElement('li');
+            /* on ajoute une classe pour le regroupement d'élément de liste bootstrap */
             li.classList.add('list-group-item');
+            /* on crée un noeud de text contenant la valeur du champ de saisie qu'on ajourte en enfant dans li */
             li.append(document.createTextNode(source.value));
+            /* on surveille le clic sue la li créée */
+            li.addEventListener('click', function(event){
+                /* on stoppe la propagation du clic */
+                event.stopPropagation();
+                /* si la li à l'attribut style */
+                if(this.hasAttribute('style')){
+                    /* on supprime l'attribut */
+                    this.removeAttribute('style');
+                }else{
+                    /* sinon on ajoute la propriété css line-through en créant l'attribut style */
+                    this.style.setProperty('text-decoration', 'line-through');
+                }
+            });
+            /* on crée un bouton de fermeture */
+            const closeButton = document.createElement('button');
+            /* les attributs et classes bootstrap sont ajouté pour l'affichage*/
+            closeButton.setAttribute('aria-label', 'close');
+            closeButton.setAttribute('type', 'button');
+            closeButton.classList.add('btn-close', 'float-end');
+            /* on surveille le clic */
+            closeButton.addEventListener('click', function(event){
+                /* stop progation clic */
+                event.stopPropagation();
+                /* on supprime l'élément parent */
+                this.parentElement.remove();
+                /* on supprime le bouton */
+                this.remove();
+            });
+            /* on ajoute li dans la liste */
             target.append(li);
+            /* on ajoute le bouton à la suite du noeud de texte */
+            li.append(closeButton);
+            /* On vide la valeur de l'élément de saisie */
             source.value = '';
         }
     }

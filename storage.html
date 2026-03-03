@@ -118,10 +118,10 @@
                 </p>
                 <p>
                     <div class="btn-group">
-                        <button class="btn btn-outline-primary btn-sm" onclick="">
+                        <button class="btn btn-outline-primary btn-sm" onclick="cookieUserLogged()">
                             Enregistrer                            
                         </button>
-                        <button class="btn btn-outline-primary btn-sm" onclick="">supprimer</button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="cookieUsernameDelete('username')">supprimer</button>
                     </div>
                 </p>
             </article>
@@ -134,7 +134,8 @@
     </footer>
     <script>
         checkSessionUser();
-        checkLocalUser()
+        checkLocalUser();
+        checkUnsernameCookie();
     </script>
 </body>
 

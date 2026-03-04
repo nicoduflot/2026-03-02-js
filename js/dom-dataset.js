@@ -188,4 +188,19 @@ loaded(function(){
         });
     });
 
+    let colorNow = 'bg-danger';
+    q('#p4 th').map(function(th){
+        th.addEventListener('click', function(){
+            const colonne = this.dataset.col;
+            for(i = 6; i > 0; i = i - 1){
+                const cell = q(`td[data-col="${colonne}"][data-row="${i}"]`);
+                if( !cell.classList.contains('bg-danger') && !cell.classList.contains('bg-warning')){
+                    cell.classList.add(colorNow);
+                    colorNow = (colorNow === 'bg-danger')? 'bg-warning' : 'bg-danger';
+                    break;
+                }
+            }
+        });
+    });
+
 });

@@ -67,8 +67,3 @@ p:not(p.stupid){
 .table>:not(caption)>*>*{
     background-color: transparent;
 }
-
-
-p:hover{
-    background-color: rgba(0, 255, 255, 0.2);
-}

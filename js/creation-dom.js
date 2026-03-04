@@ -200,6 +200,20 @@ window.addEventListener('DOMContentLoaded', function(){
             document.getElementById('formValid').submit();
         }else{
             /* Mettre les classes bootstrap dans les bon éléments pour indiquer les champs valident ou non */
+            if('' === nom.value){
+                nom.classList.add('border', 'border-danger');
+                document.getElementById(nom.getAttribute('aria-describedby')).classList.remove('visually-hidden');
+            }else{
+                nom.classList.remove('border', 'border-danger');
+                document.getElementById(nom.getAttribute('aria-describedby')).classList.add('visually-hidden');
+            }
+            if('' === prenom.value){
+                prenom.classList.add('border', 'border-danger');
+                document.getElementById(prenom.getAttribute('aria-describedby')).classList.remove('visually-hidden');
+            }else{
+                prenom.classList.remove('border', 'border-danger');
+                document.getElementById(prenom.getAttribute('aria-describedby')).classList.add('visually-hidden');
+            }
         }
         
     });

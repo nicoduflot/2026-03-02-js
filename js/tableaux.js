@@ -222,7 +222,6 @@ for(let i = 0; i < carsTest.length; i = i + 1 ){
     }
 }
 
-
 console.log('-------------- trouver la première occurence --');
 /* trouver la première occurence d'un tableau selon un modèle */
 

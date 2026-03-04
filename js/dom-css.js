@@ -47,7 +47,12 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+
+    /*
     
-    
+    Mini exercice
+    Faire bouger le carré orange quand on clique sur les bouton : 
+    il s'agit de la manipulation de classe associé à au carré
+    */
 
 });

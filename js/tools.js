@@ -11,8 +11,23 @@ function q(selector){
         return Array.from(list)[0];
     }
 }
+/*
+{
+    attributs: {
+        src: 'https://www.monsite.com',
+        data-toto: 'titi
+    },
+    style: {
+        border: '1px solid red'
+    },
+    classes: [
+        'text-white', 'm-2'
+    ]
+}
+*/
 
 function cE(element, options = {}){
+    
     const newElement = document.createElement(element);
     return newElement;
 }

@@ -47,4 +47,12 @@ loaded(function () {
     }
 
     getChart();
+
+    /*
+    Mini exercice : 
+    implémenter le changement de type de graphique quand on change le bouton radio sélectionné :
+    au clic sur un des deux boutons radion, changer le graphique
+    getChart('line');
+    */
+
 });

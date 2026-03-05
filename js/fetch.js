@@ -1,4 +1,4 @@
-function jsonToTable(data, searchTerm = ''){
+function jsonToTable(data, searchTerm = '', option = {}){
     if(!(data.length > 1)){
         data = [data];
     }

@@ -12,7 +12,7 @@ loaded(function () {
                 let title = '';
                 dataLines.map(function (lines) {
                     const line = lines.split(';');
-                    console.log(line);
+                    /*console.log(line);*/
                     if (!firstLine) {
                         labels.push(line[0]);
                         donnees.push(line[1]);
@@ -23,7 +23,7 @@ loaded(function () {
                 });
 
                 const ctx = document.getElementById('myChart');
-
+                
                 new Chart(ctx, {
                     type: typeChart,
                     data: {
@@ -54,5 +54,15 @@ loaded(function () {
     au clic sur un des deux boutons radion, changer le graphique
     getChart('line');
     */
+
+    q('[name="typeChart"]').map(function(radio){
+        radio.addEventListener('click', function(){
+            q('#myChart').remove();
+            const chart = cE('canvas');
+            chart.setAttribute('id', 'myChart');
+            q('#canvasChart').append(chart);
+            getChart(this.value);
+        });
+    });
 
 });

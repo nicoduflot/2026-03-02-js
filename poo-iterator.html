@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/tools.js"></script>
     <script src="./js/iterator-generator.js"></script>
 </head>
 
@@ -65,14 +66,20 @@
         <section class="row">
             <article>
                 <h2>POO : Iterator & generator</h2>
-                <p>
-                    Les modules permettent de regrouper les différents fichiers js en un seul appel via 
-                    un fichier js unique.
-                </p>
+                <h3>Iterator</h3>
                 <p>
                     Un itérator permet de parcourir les données de l'objet comme s'il s'agissait d'un tableau<br />
                         Iterator => Itérable => structure d'itération (for / while .forEach() / etc)
                 </p>
+                <h3>Generator</h3>
+                <p>
+                    Generator est une fonction qui retourne plusieurs valeurs.
+                </p>
+                <ul>
+                    <li>si on utilise return, lui ne retournera qu'une seule fois un résultat.</li>
+                    <li>si je veux un ensemble de résultats (une "récolte"), on utilisera le mot-clef "yield" (rendre / récolter) pour spécifier qu'une fonction est generator</li>
+                    <li>il faut utiliser le caractère spécial * à la fin du mot function lors de la déclaration</li>
+                </ul>
                 <p>
                     Tout se passe dans le code
                 </p>

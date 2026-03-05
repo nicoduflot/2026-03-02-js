@@ -74,11 +74,11 @@ console.log(monUser.id);
 console.log(monUser.login);
 console.log(monUser.action());
 
-fetch('./ressources/user.json')
+/*fetch('./ressources/user.json')
 .then(function(reponse){return reponse.json()})
 .then(function(data){
-    /*console.log(data);    */
-});
+    *console.log(data);
+});*/
 
 /* Si le JSON est récupéré via une requête AJAX, si une méthode est décrite dans un des objet JSON renvoyé, elle n'est pas utilisable. */
 
@@ -197,3 +197,139 @@ console.log(monAmbulance.demarrer());
 console.log(monAmbulance.avancer());
 console.log(monAmbulance.sirene = true);
 console.log(monAmbulance.demarrer());
+
+/* créer une classe mère 
+Compte 
+    Attributs :
+    - nom 
+    - prenom
+    - solde
+    Méthodes
+    - retirer de l'argent
+    - ajouter de l'argent - Impossible de retirer plus que le solde restant
+
+une classe fille CompteInteret
+    Attributs :
+    - nom 
+    - prenom
+    - solde
+    - tauxInteret
+    Méthodes
+    - retirer de l'argent - Impossible de retirer plus que le solde restant
+    - ajouter de l'argent
+    - calculerInterets
+    - crediterInterets
+
+une classe fille CompteCourant
+    Attributs :
+    - nom 
+    - prenom
+    - solde
+    - decouvertAutorise
+    Méthodes
+    - retirer de l'argent - pas plus que le solde en prenant en compte le découvert autorisé
+    - ajouter de l'argent
+*/
+
+class Compte{
+    constructor(nom, prenom, solde){
+        this.nom = nom;
+        this.prenom = prenom;
+        this.solde = solde;
+    }
+
+    retirerDeLargent(montant){
+        if(this.solde - montant >= 0){
+            this.solde = this.solde - montant;
+            console.log(`${this.constructor.name} : 
+                ${montant} € débité, Solde restant : ${(this.solde >= 0)? 'créditeur' : 'Débiteur'} : ${this.solde} €`);
+            return true;
+        }else{
+            console.log(`${this.constructor.name} : 
+                Le montant ${montant} € dépasse le solde autorisé du compte : ${this.solde} €`);
+            return false;
+        }
+    }
+    
+    ajouterDeLargent(montant){
+        this.solde = this.solde + montant;
+        console.log(`${this.constructor.name} : 
+            ${montant} € crédité, Solde : ${(this.solde >= 0)? 'créditeur' : 'Débiteur'} : ${this.solde} €`);
+        return true;
+    }
+
+    virement(montant, beneficiaire){
+        if(this.retirerDeLargent(montant)){
+            beneficiaire.ajouterDeLargent(montant);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+}
+
+const compte = new Compte('Duflot', 'Nicolas', 2000);
+console.log(compte);
+compte.ajouterDeLargent(10);
+compte.retirerDeLargent(2000);
+compte.retirerDeLargent(2000);
+
+class CompteInteret extends Compte{
+    constructor(nom, prenom, solde, tauxInteret){
+        super(nom, prenom, solde);
+        this.tauxInteret =tauxInteret;
+    }
+
+    /*
+    x +20% de x = x*1.2;
+    (1.2 - 1) * x = 20% de x
+    */
+
+    calculerInteret(){
+        return parseFloat(((this.tauxInteret - 1) * this.solde).toFixed(2));
+    }
+
+    crediterInterets(){
+        super.ajouterDeLargent(this.calculerInteret());
+    }
+}
+
+const compteInteret = new CompteInteret('Duflot', 'Nicolas', 2000, 1.015);
+
+console.log(compteInteret);
+console.log(compteInteret.calculerInteret());
+compteInteret.crediterInterets();
+compteInteret.retirerDeLargent(2100);
+
+class CompteCourant extends Compte{
+    constructor(nom, prenom, solde, decouvertAutorise = 0){
+        super(nom, prenom, solde);
+        this.decouvertAutorise = decouvertAutorise;
+    }
+
+    retirerDeLargent(montant){
+        if((this.solde + this.decouvertAutorise) - montant >= 0){
+            this.solde = this.solde - montant;
+            console.log(`${this.constructor.name} : 
+                ${montant} € débité, Solde restant : ${(this.solde >= 0)? 'créditeur' : 'Débiteur'} : ${this.solde} €`);
+            return true;
+        }else{
+            console.log(`${this.constructor.name} : 
+                Le montant ${montant} € dépasse le solde autorisé du compte : ${this.solde} € + découvert autorisé de ${this.decouvertAutorise} €`);
+            return false;
+        }
+    }
+}
+
+const compteCourant = new CompteCourant('Duflot', 'Nicolas', 2000, 400);
+console.log(compteCourant);
+compteCourant.retirerDeLargent(200);
+compteCourant.retirerDeLargent(2400);
+compteCourant.retirerDeLargent(2200);
+compteCourant.ajouterDeLargent(2200);
+
+compteCourant.virement(400, compte);
+compteCourant.virement(2400, compte);
+
+/* Il est possible de manipuler un objet exister via un autre objet */

@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/tools.js"></script>
-    <script src="./js/factory.js"></script>
+    <script type="module" src="./td/Td.js"></script>
 </head>
 
 <body>
@@ -71,14 +71,70 @@
     <main class="container">
         <section class="row">
             <article>
-                <h2>POO : Les Factory</h2>
+                <h2>Travail dirigé récapitulatif</h2>
+                <h3>Faire un Yamms</h3>
                 <p>
-                    Usine de création d'objet, sans passer par une classe "normale" qui
-                    possède un constructeur
+                    Lancer 5 dés à 6 faces, trois lancer par tour de jeu. On sélectionne une combinaison de dé qui rapporte des points. Une fois qu'une combinaison a été utilisée, elle n'est plus sélectionnable.
                 </p>
-                <p>
-                    Tout se passe dans le code
-                </p>
+                <h4>Objets à créer</h4>
+                <ul>
+                    <li>Un objet dé</li>
+                </ul>
+            </article>
+            <article class="col-lg-6">
+                <button class="btn btn-secondary btn-sm" id="lancer">Lancer</button> 
+                <button class="btn btn-secondary btn-sm disabled" id="reinit">Nouveau tour</button> 
+                <button class="btn btn-secondary btn-sm disabled" id="valid">Valider</button> 
+                <div class="row" id="plateau">
+                    <div class="col text-center">
+                        <div class="resDe text-center" id="de1">
+                            0
+                        </div>
+                        <input type="checkbox" name="blockDe1" data-target="#de1" />
+                    </div>
+                    <div class="col text-center">
+                        <div class="resDe text-center" id="de2">
+                            0
+                        </div>
+                        <input type="checkbox" name="blockDe2"  data-target="#de2"/>
+                    </div>
+                    <div class="col text-center">
+                        <div class="resDe text-center" id="de3">
+                            0
+                        </div>
+                        <input type="checkbox" name="blockDe3"  data-target="#de3"/>
+                    </div>
+                    <div class="col text-center">
+                        <div class="resDe text-center" id="de4">
+                            0
+                        </div>
+                        <input type="checkbox" name="blockDe4"  data-target="#de4"/>
+                    </div>
+                    <div class="col text-center">
+                        <div class="resDe text-center" id="de5">
+                            0
+                        </div>
+                        <input type="checkbox" name="blockDe5" data-target="#de5" />
+                    </div>
+                </div>
+            </article>
+            <article class="col-lg-6">
+                <h2>Liste des combinaisons</h2>
+                <ul id="listeCombi">
+                    <li><input type="checkbox" id="c01" data-target="#res1" /> <span id="res1">  AS</span></li>
+                    <li><input type="checkbox" id="c02" data-target="#res2" /> <span id="res2">  2</span></li>
+                    <li><input type="checkbox" id="c03" data-target="#res3" /> <span id="res3">  3</span></li>
+                    <li><input type="checkbox" id="c04" data-target="#res4" /> <span id="res4">  4</span></li>
+                    <li><input type="checkbox" id="c05" data-target="#res5" /> <span id="res5">  5</span></li>
+                    <li><input type="checkbox" id="c06" data-target="#res6" /> <span id="res6">  6</span></li>
+                    <li><input type="checkbox" id="c07" data-target="#resB" /> <span id="resB">  BRELAN</span></li>
+                    <li><input type="checkbox" id="c08" data-target="#resCr" /> <span id="resCr"> CARRÉ</span></li>
+                    <li><input type="checkbox" id="c09" data-target="#resf" /> <span id="resf">  FULL</span></li>
+                    <li><input type="checkbox" id="c10" data-target="#resPs" /> <span id="resPs"> PETITE SUITE</span></li>
+                    <li><input type="checkbox" id="c11" data-target="#resGs" /> <span id="resGs"> GRANDE SUITE</span></li>
+                    <li><input type="checkbox" id="c12" data-target="#resY" /> <span id="resY">  YAM'S</span></li>
+                    <li><input type="checkbox" id="c13" data-target="#resCh" /> <span id="resCh"> CHANCE</span></li>
+                </ul>
             </article>
         </section>
     </main>

@@ -119,16 +119,35 @@
                 </div>
             </article>
             <article class="col-lg-6">
+                <h2>Score</h2>
+                <table class="table">
+                    <tr>
+                        <th>Partie basse</th>
+                        <td><span id="scoreN1">0</span></td>
+                    </tr>
+                    <tr>
+                        <th>Bonus partie basse<br />Score partie basse >= 63</th>
+                        <td><span id="bonus">0</span></td>
+                    </tr>
+                    <tr>
+                        <th>Partie Haute</th>
+                        <td><span id="scoreN2">0</span></td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <th><span id="scoreTotal">0</span></th>
+                    </tr>
+                </table>                
                 <h2>Liste des combinaisons</h2>
                 <ul id="listeCombi">
-                    <li><input type="checkbox" id="c01" data-target="#res1" /> <span id="res1">  AS</span></li>
-                    <li><input type="checkbox" id="c02" data-target="#res2" /> <span id="res2">  2</span></li>
-                    <li><input type="checkbox" id="c03" data-target="#res3" /> <span id="res3">  3</span></li>
-                    <li><input type="checkbox" id="c04" data-target="#res4" /> <span id="res4">  4</span></li>
-                    <li><input type="checkbox" id="c05" data-target="#res5" /> <span id="res5">  5</span></li>
-                    <li><input type="checkbox" id="c06" data-target="#res6" /> <span id="res6">  6</span></li>
-                    <li><input type="checkbox" id="c07" data-target="#resB" /> <span id="resB">  BRELAN</span></li>
-                    <li><input type="checkbox" id="c08" data-target="#resCr" /> <span id="resCr"> CARRÉ</span></li>
+                    <li><input type="checkbox" id="c01" data-target="#res1" value="1" /> <span id="res1">  AS</span></li>
+                    <li><input type="checkbox" id="c02" data-target="#res2" value="2" /> <span id="res2">  2</span></li>
+                    <li><input type="checkbox" id="c03" data-target="#res3" value="3" /> <span id="res3">  3</span></li>
+                    <li><input type="checkbox" id="c04" data-target="#res4" value="4" /> <span id="res4">  4</span></li>
+                    <li><input type="checkbox" id="c05" data-target="#res5" value="5" /> <span id="res5">  5</span></li>
+                    <li><input type="checkbox" id="c06" data-target="#res6" value="6" /> <span id="res6">  6</span></li>
+                    <li><input type="checkbox" id="c07" data-target="#resB" value="3" /> <span id="resB">  BRELAN</span></li>
+                    <li><input type="checkbox" id="c08" data-target="#resCr" value="4" /> <span id="resCr"> CARRÉ</span></li>
                     <li><input type="checkbox" id="c09" data-target="#resf" /> <span id="resf">  FULL</span></li>
                     <li><input type="checkbox" id="c10" data-target="#resPs" /> <span id="resPs"> PETITE SUITE</span></li>
                     <li><input type="checkbox" id="c11" data-target="#resGs" /> <span id="resGs"> GRANDE SUITE</span></li>

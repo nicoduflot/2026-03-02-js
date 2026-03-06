@@ -3,6 +3,38 @@ import De from "./classes/De.js";
 
 loaded(function(){
     
+    /*let des = [3, 3, 3, 2, 2];*/
+    function frequences(des){
+        const counts = des.reduce(function(acc, val){
+            acc[val] = (acc[val] || 0) + 1;
+            return acc;
+        }, {});
+
+        const freq = Object.values(counts);
+        
+        return freq;
+    }
+
+    function suite(taille, tableau){
+        const suite = new Set();
+        const uniques = [];
+        tableau.sort().map(function(valeur){
+            suite.add(valeur);
+        });
+        
+        suite.forEach(function(val){
+            uniques.push(val);
+        })
+        
+        if(uniques.length !== taille){
+            return false;
+        }
+        return uniques.every(function(val, i){
+        
+            return i === 0 || val === uniques[i - 1] + 1;
+        });
+    }
+        
     const de1 = new De(6);
     const de2 = new De(6);
     const de3 = new De(6);
@@ -80,7 +112,6 @@ loaded(function(){
                 q(combi.dataset.target).style.textDecoration = 'line-through';
                 q('#valid').classList.remove('disabled');
                 combiChoisie = combi.id;
-                
             }else{
                 q(combi.dataset.target).style.textDecoration = 'none';
                 q('#valid').classList.add('disabled');
@@ -121,29 +152,33 @@ loaded(function(){
                 scoreN1 = scoreN1 + score;
             break;
             case 'c07':
+                if(frequences(desPlateau).includes(3)){
+                    scoreN2 = scoreN2 + sommePlateau(desPlateau);
+                }
+            break;
             case 'c08':
-                /* brelan ou carré */
-                
-                let cpt = 1;
-                desPlateau.map(function(valeur, index, tab){
-                    if(valeur == tab[index+1]){
-                        cpt = cpt + 1;
-                        if(cpt == choixPoints.value){
-                            scoreN2 = scoreN2 + sommePlateau(desPlateau);
-                        }
-                    }else{
-                        cpt = 1;
-                    }
-
-                });
+                if(frequences(desPlateau).includes(4)){
+                    scoreN2 = scoreN2 + sommePlateau(desPlateau);
+                }
             break;
             case 'c09':
                 /* full */
-
+                if(frequences(desPlateau).includes(3) && frequences(desPlateau).includes(2)){
+                    scoreN2 = scoreN2 + 25;
+                }
+            break;
+            case 'c10':
+                if(suite(4, desPlateau)){
+                    scoreN2 = scoreN2 + 25;
+                }
+            break;
+            case 'c11':
+                if(suite(5, desPlateau)){
+                    scoreN2 = scoreN2 + 40;
+                }
             break;
             case 'c12':
-                let scoreYam = desPlateau[0] * 5;
-                if(scoreYam === sommePlateau(desPlateau)){
+                if(frequences(desPlateau).includes(5)){
                     scoreN2 = scoreN2 + 50;
                 }
             break;
@@ -161,6 +196,18 @@ loaded(function(){
         q('#scoreN2').innerText = scoreN2;
         q('#scoreTotal').innerText = scoreTotal;
         reinit();
+    });
+
+    q('div.resDe').map(function(de){
+        de.addEventListener('click', function(){
+            this.parentNode.children[1].checked = !this.parentNode.children[1].checked;
+            /*
+            this.nextSibling.checked = !this.nextSibling.checked;
+            console.log(this.parentNode);
+            console.log(this.parentNode.children);
+            console.log(this.parentNode.children[1]);
+            */
+        });
     });
 
 });
